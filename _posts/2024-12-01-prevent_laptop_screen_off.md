@@ -4,6 +4,8 @@ date: 2024-12-01
 categories: [Laptop]
 tags: [Linux,Tips,Laptop]
 description: Instructions to keep your laptop screen on when closed.
+image:
+  path: /assets/img/headers/Laptop-screen.jpg
 ---
 
 

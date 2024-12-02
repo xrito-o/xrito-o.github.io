@@ -3,6 +3,8 @@ title: "Chirpy Wiki"
 date: 2024-12-01
 categories: [Chirpy Wiki]
 tags: [wiki]
+image:
+  path: /assets/img/headers/journal-blue.webp
 ---
 
 # 🌐 Awesome Jekyll Resources  
