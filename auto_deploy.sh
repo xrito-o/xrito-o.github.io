@@ -1,5 +1,6 @@
 #!/bin/bash
 
+bundle exec jekyll build
 # Check if the current directory is a Git repository
 if [ ! -d ".git" ]; then
     git init
