@@ -2,7 +2,7 @@
 title: "Variables, Format Specifiers, Data Types Of C"
 date: 2025-03-28-01:55:58
 categories: [Programming]
-tags: [c, Variables, Format Specifiers, Data Types]
+tags: [C programming, Variables, Format Specifiers, Data Types]
 image:
   path: /assets/img/headers/c-programming.png
 ---
