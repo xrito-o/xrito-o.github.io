@@ -70,7 +70,7 @@ option is set.
 
 [control]: https://github.com/Genymobile/scrcpy/issues/70#issuecomment-373286323
 
-Note that USB debugging is not required to run scrcpy in [OTG mode](doc/otg.md).
+Note that USB debugging is not required to run scrcpy in [OTG mode](https://github.com/Genymobile/scrcpy/blob/master/doc/otg.md).
 
 ## Get the app
 
