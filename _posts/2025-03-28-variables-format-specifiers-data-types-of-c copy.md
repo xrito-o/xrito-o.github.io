@@ -1,11 +1,12 @@
 ---
-title: "Variables, Format Specifiers, Data Types In C"
+title: "Variables, Format Specifiers, Data Types Of C"
 date: 2025-03-28-01:55:58
 categories: [Programming]
-tags: [c,Variables,Format Specifiers,Data Types]
+tags: [c, Variables, Format Specifiers, Data Types]
 image:
   path: /assets/img/headers/c-programming.png
 ---
+
 In C, variables are used to store data values. A variable has a **data type**, a **name**, and a **value**. Here’s a breakdown of variables in C:
 
 ---
@@ -51,11 +52,10 @@ Format specifiers in C are used with functions like `printf()` and `scanf()` to 
 
 #### **1. Integer Format Specifiers**
 
-
-| Specifier    | Description              | Example                     |
-| -------------- | -------------------------- | ----------------------------- |
-| `%d` or `%i` | Signed integer (decimal) | `printf("%d", 42);`         |
-| `%u`         | Unsigned integer         | `printf("%u", 42);`         |
+| Specifier    | Description              | Example                    |
+| ------------ | ------------------------ | -------------------------- |
+| `%d` or `%i` | Signed integer (decimal) | `printf("%d", 42);`        |
+| `%u`         | Unsigned integer         | `printf("%u", 42);`        |
 | `%o`         | Octal integer            | `printf("%o", 42);` → `52` |
 | `%x`         | Hexadecimal (lowercase)  | `printf("%x", 42);` → `2a` |
 | `%X`         | Hexadecimal (uppercase)  | `printf("%X", 42);` → `2A` |
@@ -64,9 +64,8 @@ Format specifiers in C are used with functions like `printf()` and `scanf()` to 
 
 #### **2. Floating-Point Format Specifiers**
 
-
-| Specifier    | Description                            | Example                                    |
-| -------------- | ---------------------------------------- | -------------------------------------------- |
+| Specifier    | Description                            | Example                                   |
+| ------------ | -------------------------------------- | ----------------------------------------- |
 | `%f`         | Floating-point (decimal notation)      | `printf("%f", 3.14159);` → `3.141590`     |
 | `%.nf`       | Fixed decimal places (`n` digits)      | `printf("%.2f", 3.14159);` → `3.14`       |
 | `%e` or `%E` | Scientific notation                    | `printf("%e", 3.14159);` → `3.141590e+00` |
@@ -76,9 +75,8 @@ Format specifiers in C are used with functions like `printf()` and `scanf()` to 
 
 #### **3. Character & String Format Specifiers**
 
-
-| Specifier | Description | Example                             |
-| ----------- | ------------- | ------------------------------------- |
+| Specifier | Description | Example                            |
+| --------- | ----------- | ---------------------------------- |
 | `%c`      | Character   | `printf("%c", 'A');` → `A`         |
 | `%s`      | String      | `printf("%s", "Hello");` → `Hello` |
 
@@ -86,18 +84,16 @@ Format specifiers in C are used with functions like `printf()` and `scanf()` to 
 
 #### **4. Pointer Format Specifier**
 
-
 | Specifier | Description           | Example              |
-| ----------- | ----------------------- | ---------------------- |
+| --------- | --------------------- | -------------------- |
 | `%p`      | Prints memory address | `printf("%p", ptr);` |
 
 ---
 
 #### **5. Miscellaneous**
 
-
-| Specifier | Description | Example                |
-| ----------- | ------------- | ------------------------ |
+| Specifier | Description | Example               |
+| --------- | ----------- | --------------------- |
 | `%%`      | Prints`%`   | `printf("%%");` → `%` |
 
 ---
@@ -153,9 +149,8 @@ The data type specifies the size and type of information the variable will store
 
 {% include embed/youtube.html id='1eyf1-RU_eg' %}
 
-
 | Data Type | Size (bytes) | Description                               |
-| ----------- | -------------- | ------------------------------------------- |
+| --------- | ------------ | ----------------------------------------- |
 | `int`     | 4            | Stores integers (whole numbers)           |
 | `float`   | 4            | Stores decimal numbers (single precision) |
 | `double`  | 8            | Stores decimal numbers (double precision) |
@@ -164,13 +159,13 @@ The data type specifies the size and type of information the variable will store
 
 ```c
     char a = 'C';                   // single character    %c
-    char b[] = "Bro";            // array of characters %s  
+    char b[] = "Bro";            // array of characters %s
 
     float c = 3.141592;                          // 4 bytes (32 bits of precision) 6 - 7 digits %f
     double d = 3.141592653589793; // 8 bytes (64 bits of precision) 15 - 16 digits %lf
 
     bool e = true;                         // 1 byte (true or false) %d
-  
+
     char f = 120;                          // 1 byte (-128 to +127) %d or %c
     unsigned char g = 255;       // 1 byte (0 to +255) %d or %c
 
@@ -198,7 +193,7 @@ The data type specifies the size and type of information the variable will store
 
 ```
 
-## 4. Constants in C**
+## 4. Constants in C\*\*
 
 To create a constant variable (unchangeable value), use `const`:
 
