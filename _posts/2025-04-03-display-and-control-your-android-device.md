@@ -75,7 +75,7 @@ Note that USB debugging is not required to run scrcpy in [OTG mode](https://gith
 ## Get the app
 
 - [Linux](https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md)
-- [Windows](doc/windows.md) (read [how to run](https://github.com/Genymobile/scrcpy/blob/master/doc/windows.md#run))
+- [Windows](https://github.com/Genymobile/scrcpy/blob/master/doc/windows.md) (read [how to run](https://github.com/Genymobile/scrcpy/blob/master/doc/windows.md#run))
 - [macOS](https://github.com/Genymobile/scrcpy/blob/master/doc/macos.md)
 
 ## Must-know tips
