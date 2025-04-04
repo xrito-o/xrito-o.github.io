@@ -6,35 +6,36 @@ tags: [C programming]
 image:
   path: /assets/img/headers/c-programming.png
 ---
+<!--[**1.What is C?**](#what-is-c)
 
-[**What is C?**](#what-is-c)
+[**2.constants**](#constants)
 
-[**constants**](#constants)
+[**3.Variables**](#variables)
 
-[**Variables**](#variables)
+[**Data Types in C**](#data-types-in-c)
 
-[**Header File Libraries**](#header-file-libraries)
+[**4.Header File Libraries**](#header-file-libraries)
 
-[**hello-world.c**](#hello-worldc)
+[**5.hello-world.c**](#hello-worldc)-->
 
 ## **What is C?**
 
 C is a general-purpose programming language created by Dennis Ritchie at the Bell Laboratories in 1972.It is a very popular language, despite being old. The main reason for its popularity is because it is a fundamental language in the field of computer science.C is strongly associated with UNIX, as it was developed to write the UNIX operating system.
 
-## [**constants**](/posts/constants-in-c/)
+## [**Constants**](/posts/constants-in-c/)
 
 constants are the values which will never change during the execution of program.
 
-- There are two type of Constants
+ **There are two type of Constants**
 
 1. Primary constants
 2. Secondary constants
 
-- Primary constants are of three types.
+**Primary constants are of three types.**
 
-1. **Integer Constants** (it will contain only integers. Remember an integer constant will never contain any decimal point. Eg: 1, 2, -43 etc)
-2. **Real Constant or Floating Point Constant** (A real constant may have any digit but it must contain one decimal point. Eg: 1.22, -54.5, 3432.13)
-3. **Character Constant** (It is single (remember) alphabet, number or any special symbol which is enclosed in an inverted commas. Eg: ’+’, ’1’, ’a’, etc.)
+1. Integer Constants 
+2. Real Constant or Floating Point Constant
+3. Character Constant
 
 ## [**Variables**](/posts/variables-format-specifiers-in-c/)
 
@@ -53,6 +54,29 @@ To create a variable, specify the **type** and assign it a **value**:
 type variableName = value;
 ```
 
+## [**Data Types**](/posts/data-types-of-c/)
+
+The data type specifies the size and type of information the variable will store.
+
+
+| Data Type | Size (bytes) | Description                               |
+| ----------- | -------------- | ------------------------------------------- |
+| `int`     | 4            | Stores integers (whole numbers)           |
+| `float`   | 4            | Stores decimal numbers (single precision) |
+| `double`  | 8            | Stores decimal numbers (double precision) |
+| `char`    | 1            | Stores a single character                 |
+| `void`    | 0            | Represents "no type" (used for functions) |
+
+## [**Operators**](/posts/operators-in-c/)
+
+Operators in C are symbols that perform operations on variables and values. They are categorized into different types:
+
+1. Arithmetic Operators.
+2. Augmented Assignment Operators.
+3. Comparison Operators.
+4. Logical operators.
+
+
 ## [**Header File Libraries**](/posts/header-file-libraries-in-c/)
 
 A header file in C is a file that contains function declarations, macros, and definitions. It helps you use built-in functions without writing them yourself.
@@ -61,8 +85,9 @@ A header file in C is a file that contains function declarations, macros, and de
 
 #### **Common C Header Files & Their Uses**
 
+
 | **Header File**   | **What It Does**                                  |
-| ----------------- | ------------------------------------------------- |
+| ------------------- | --------------------------------------------------- |
 | **`<stdio.h>`**   | Input & output (e.g.,`printf`, `scanf`)           |
 | **`<stdlib.h>`**  | Memory management (`malloc`, `free`), conversions |
 | **`<string.h>`**  | String handling (`strlen`, `strcpy`, `strcmp`)    |

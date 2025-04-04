@@ -4,10 +4,8 @@ date: 2025-04-03-14:24:45
 categories: [C programming]
 tags: [C programming]
 image:
-  path: /assets/img/headers/c-programming.png
+    path: /assets/img/headers/c-programming.png
 ---
-
-## **Constants in C**
 
 Constants are fixed values that do not change during the execution of a program. They are used to define values that remain constant throughout the program, ensuring better readability, maintainability, and security of the code.
 
@@ -22,11 +20,32 @@ Constants in C are broadly classified into two categories:
 
 ---
 
-## **1. Primary Constants**
+## **Comparison Table: Primary vs. Secondary Constants**
+---
+
+
+|                   **Category**                   | **Type**                                                     | **Example**                     |
+| :-------------------------------------------------: | -------------------------------------------------------------- | --------------------------------- |
+|   [**Primary Constants**](#1-primary-constants)   | [Integer Constant](#11-integer-constants)                    | `10`, `-3`, `0xA`               |
+|                                                   | [Real Constant](#12-real-constants-floating-point-constants) | `3.14`, `-5.6`                  |
+|                                                   | [Character Constant](#13-character-constants)                | `'A'`, `'9'`                    |
+| [**Secondary Constants**](#2-secondary-constants) | [String Constant](#21-string-constants)                      | `"Hello"`                       |
+|                                                   | [Array Constant](#22-array-constants)                        | `{1, 2, 3}`                     |
+|                                                   | [Pointer Constant](#23-pointer-constants)                    | `int *const p;`                 |
+|                                                   | [Enumeration (`enum`)](#24-enumeration-constants-enum)       | `enum Colors {RED, GREEN};`     |
+|                                                   | [Structure Constant](#25-structure-constants-struct)         | `struct Point { const int x; }` |
+|                                                   | [Macro Constant](#26-macro-constants-definehttps:/)          | `#define MAX 100`               |
+
+---
+
+# **1. Primary Constants**
+---
 
 Primary constants are fundamental values that remain unchanged. These include:
 
-### **1.1 Integer Constants**
+#### **1.1 Integer Constants**
+
+---
 
 - An integer constant contains only digits and does not include any decimal point.
 - It can be positive, negative, or zero.
@@ -35,7 +54,7 @@ Primary constants are fundamental values that remain unchanged. These include:
   - **Octal (Base 8):** Starts with `0`. Example: `077` (equals 63 in decimal)
   - **Hexadecimal (Base 16):** Starts with `0x`. Example: `0x1A` (equals 26 in decimal)
 
-#### **Example in C:**
+##### **Example in C:**
 
 ```c
 #include <stdio.h>
@@ -49,14 +68,15 @@ int main() {
 
 ---
 
-### **1.2 Real Constants (Floating Point Constants)**
+#### **1.2 Real Constants (Floating Point Constants)**
+---
 
 - A real constant (or floating-point constant) contains digits and must have a decimal point.
 - It can be expressed in:
   - **Fractional form:** Example: `3.1416`, `-54.5`
   - **Exponential form:** Example: `2.5e3` (equals `2500`), `3.2E-4` (equals `0.00032`)
 
-#### **Example in C:**
+##### **Example in C:**
 
 ```c
 #include <stdio.h>
@@ -70,13 +90,14 @@ int main() {
 
 ---
 
-### **1.3 Character Constants**
+#### **1.3 Character Constants**
+---
 
 - A character constant is a single character enclosed in single quotes (`' '`).
 - Examples: `'A'`, `'1'`, `'%'`, `'z'`
 - Each character constant is internally stored as an integer (ASCII value).
 
-#### **Example in C:**
+##### **Example in C:**
 
 ```c
 #include <stdio.h>
@@ -90,11 +111,13 @@ int main() {
 
 ---
 
-## **2. Secondary Constants**
+# **2. Secondary Constants**
+
 
 Secondary constants are derived from primary constants. These include:
 
 ### **2.1 String Constants**
+---
 
 - A string constant is a sequence of characters enclosed in double quotes (`" "`).
 - It automatically ends with a null character (`\0`).
@@ -114,6 +137,7 @@ int main() {
 ---
 
 ### **2.2 Array Constants**
+---
 
 - An array constant is a fixed collection of values stored in contiguous memory locations.
 
@@ -132,6 +156,7 @@ int main() {
 ---
 
 ### **2.3 Pointer Constants**
+---
 
 - A pointer constant is a pointer whose memory address cannot be changed.
 
@@ -153,6 +178,7 @@ int main() {
 ---
 
 ### **2.4 Enumeration Constants (`enum`)**
+---
 
 - An enumeration is a set of named integer constants.
 
@@ -173,6 +199,7 @@ int main() {
 ---
 
 ### **2.5 Structure Constants (`struct`)**
+---
 
 - A structure constant allows defining immutable fields inside a struct.
 
@@ -196,8 +223,10 @@ int main() {
 ---
 
 ### **2.6 Macro Constants (`#define`)**
+---
 
 - A preprocessor directive to define constants before compilation.
+  {% include embed/youtube.html id='BVnNg20AuYU?start=25&end=143tOQZlD-0Sc' %}
 
 #### **Example in C:**
 
@@ -213,17 +242,3 @@ int main() {
 ```
 
 ---
-
-## **Comparison Table: Primary vs. Secondary Constants**
-
-| **Category**            | **Type**             | **Example**                     |
-| ----------------------- | -------------------- | ------------------------------- |
-| **Primary Constants**   | Integer Constant     | `10`, `-3`, `0xA`               |
-|                         | Real Constant        | `3.14`, `-5.6`                  |
-|                         | Character Constant   | `'A'`, `'9'`                    |
-| **Secondary Constants** | String Constant      | `"Hello"`                       |
-|                         | Array Constant       | `{1, 2, 3}`                     |
-|                         | Pointer Constant     | `int *const p;`                 |
-|                         | Enumeration (`enum`) | `enum Colors {RED, GREEN};`     |
-|                         | Structure Constant   | `struct Point { const int x; }` |
-|                         | Macro Constant       | `#define MAX 100`               |
