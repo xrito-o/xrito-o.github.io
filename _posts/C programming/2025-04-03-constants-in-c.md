@@ -34,7 +34,7 @@ Constants in C are broadly classified into two categories:
 |                                                   | [Pointer Constant](#23-pointer-constants)                    | `int *const p;`                 |
 |                                                   | [Enumeration (`enum`)](#24-enumeration-constants-enum)       | `enum Colors {RED, GREEN};`     |
 |                                                   | [Structure Constant](#25-structure-constants-struct)         | `struct Point { const int x; }` |
-|                                                   | [Macro Constant](#26-macro-constants-definehttps:/)          | `#define MAX 100`               |
+|                                                   | [Macro Constant](#26-macro-constants-define)          | `#define MAX 100`               |
 
 ---
 
