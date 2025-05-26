@@ -1,8 +1,8 @@
 ---
 title: "WireGuard Installation on Arch Linux"
 date: 2024-12-01
-categories: [Linux Documentations]
-tags: [Linux,Arch,Tips,VPN]
+categories: [VPN]
+tags: [Linux,VPN,Arch,Wireguard]
 image:
   path: /assets/img/headers/wireguard.webp
 ---
