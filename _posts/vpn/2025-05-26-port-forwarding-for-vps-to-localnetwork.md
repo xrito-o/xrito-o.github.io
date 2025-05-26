@@ -2,7 +2,7 @@
 title: "Port Forwarding For Vps To Localnetwork"
 date: 2025-05-26-01:06:24
 categories: [Linux Documentations]
-tags: [Linux,Vpn]
+tags: [Linux,VPN]
 image:
   path: /assets/img/headers/wireguard.webp
 ---
