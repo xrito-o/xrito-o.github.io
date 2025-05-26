@@ -1,6 +1,6 @@
 ---
-layout: upcoming
-icon: fas fa-tags
+
+icon: fa-gamepad
 order: 6
 ---
 
