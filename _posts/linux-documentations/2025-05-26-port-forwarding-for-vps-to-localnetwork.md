@@ -4,7 +4,7 @@ date: 2025-05-26-01:06:24
 categories: [Linux Documentations]
 tags: [Linux,Vpn]
 image:
-  path: /assets/img/headers/Bash.jpg
+  path: /assets/img/headers/wireguard.webp
 ---
 
 Here's a full documentation based on our conversation, which includes the creation of port forwarding and deletion scripts, as well as the `pretty-nat` script for displaying `iptables` rules in a more readable format.
