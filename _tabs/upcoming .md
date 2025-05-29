@@ -3,6 +3,7 @@ layout: page
 
 order: 6
 ---
+5. [qemu](https://www.reddit.com/r/qemu_kvm/)
 
 4. [2025-05-26 Ubuntu Server: Getting started with a Linux Server ](https://www.youtube.com/watch?v=2Btkx9toufg&list=PLvMPr2hqCZ7gSzc_kto9VL0q8nVRLIeez&index=5) 
 

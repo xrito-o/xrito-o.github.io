@@ -1,5 +1,5 @@
 ---
-title: "Port Forwarding For Vps To Localnetwork"
+title: "Port Forwarding For VPS To Localnetwork"
 date: 2025-05-26-01:06:24
 categories: [VPN]
 tags: [Linux,VPN,Wireguard]
