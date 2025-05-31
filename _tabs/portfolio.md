@@ -1,6 +1,6 @@
 ---
 layout: redirect
 
-redirect: https://wiki.xrito.xyz/portfolio/
+redirect: https://blog.xrito.xyz/portfolio/
 order: 7
 ---
