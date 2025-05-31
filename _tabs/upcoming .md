@@ -3,6 +3,12 @@ layout: page
 
 order: 6
 ---
+8. [The AUR Removed My Packages, So I Created My Own Repo](https://www.youtube.com/watch?v=CYqd2AHXosk)
+
+7. WINE, Windows Programs on Linux 
+
+6. [Arch Linux in 12 Minutes](https://www.youtube.com/watch?v=PqGnlEmfYjM&)
+
 5. [qemu](https://www.reddit.com/r/qemu_kvm/)
 
 4. [2025-05-26 Ubuntu Server: Getting started with a Linux Server ](https://www.youtube.com/watch?v=2Btkx9toufg&list=PLvMPr2hqCZ7gSzc_kto9VL0q8nVRLIeez&index=5) 
