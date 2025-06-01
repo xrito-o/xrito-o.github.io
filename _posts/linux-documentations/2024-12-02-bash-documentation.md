@@ -1,6 +1,6 @@
 ---
 title: "Bash Documentation"
-date: 2024-12-02-08:48:39
+date: 2024-12-03-08:48:39
 categories: [Linux Documentations]
 tags: [Linux,Shell,Tips]
 image:
