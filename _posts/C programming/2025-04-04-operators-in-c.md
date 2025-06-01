@@ -1,6 +1,6 @@
 ---
 title: "Operators in C"
-date: 2025-04-04-04:10:36
+date: 2025-04-04-04:10:35
 categories: [C programming]
 tags: [C programming]
 hidden: true
