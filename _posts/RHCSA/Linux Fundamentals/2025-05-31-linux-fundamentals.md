@@ -4,11 +4,11 @@ date: 2025-05-31-18:52:30
 categories: [RHCSA]
 tags: [Linux,RHCSA]
 image:
-  path: /assets/img/headers/ubuntu-feature-imge.jpg
+  path: /assets/img/headers/linux-fundamentals.jpg
 ---
 
 
-### [✅ PART 1: BASICS](/posts/linux-fundamentals-basics/)
+### [PART 1: BASICS](/posts/linux-fundamentals-basics/)
 
 ##### 1. 🕰️ History of Linux Operating System
 
@@ -23,7 +23,7 @@ image:
 
 
 
-### [✅ PART 2: Installation Basics in Linux](/posts/linux-fundamentals-installation/)
+### [PART 2: Installation Basics in Linux](/posts/linux-fundamentals-installation/)
 
 ##### 2.1 🖥️ Designing the Disk Partitioning Scheme
 
