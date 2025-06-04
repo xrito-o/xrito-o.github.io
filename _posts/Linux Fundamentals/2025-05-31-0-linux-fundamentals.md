@@ -96,3 +96,23 @@ image:
 ##### 7.3 📄 Copy, Move, Delete Files and Directories
 
 ##### 7.4 🔍 Finding and Locating Files
+
+### [8.Text Editors, Text Streams, Filters, and Redirection](/posts/8-linux-fundamentals-text-editors/)
+
+##### 8.1 🔤 Vi vs Vim
+
+##### 8.2 🔁 Output Redirection & GNU Text Utilities
+
+##### 8.3 🔗 Streams, Pipes, and Redirects
+
+##### 8.4 🔍 Search with Regular Expressions
+
+### [9.File Permissions and Ownership in Linux](/posts/9-linux-fundamentals-file-permissions-and-ownership-in-linux/)
+
+##### 9.1 📄 Default File Permissions & umask
+
+##### 9.2 📜 Reading `ls -l` Output
+
+##### 9.3 🧮 Managing Permissions
+
+##### 9.4 ⚙️ Customizing File Creation Mask (`umask`)
