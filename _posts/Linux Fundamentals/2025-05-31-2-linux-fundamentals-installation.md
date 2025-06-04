@@ -1,11 +1,9 @@
 ---
 title: "Linux Fundamentals Installation "
 date: 2025-05-31-18:52:30
-categories: [RHCSA]
-tags: [Linux,RHCSA]
+categories: [Linux Fundamentals]
+tags: [Linux,Linux Fundamentals]
 hidden: true
-image:
-  path: /assets/img/headers/ubuntu-feature-imge.jpg
 ---
 
 Here's a **simple explanation** of the **Installation** section:

@@ -1,11 +1,9 @@
 ---
 title: "Linux Fundamentals Basics "
 date: 2025-05-31-18:52:30
-categories: [RHCSA]
-tags: [Linux,RHCSA]
+categories: [Linux Fundamentals]
+tags: [Linux,Linux Fundamentals]
 hidden: true
-image:
-  path: /assets/img/headers/ubuntu-feature-imge.jpg
 ---
 
 
@@ -81,5 +79,3 @@ Linux has a **layered architecture**:
 This design makes Linux **modular, secure, and stable**.
 
 ---
-
-Would you like this in **Markdown**, **PDF**, or **printable format** for school or self-study?
