@@ -10,7 +10,7 @@ image:
 
 ## PART 1: BASICS
 
-### [1.History of Linux Operating System and the Open Systems Standard](/posts/1-slinux-fundamentals-basics/)
+### [1.History of Linux Operating System and the Open Systems Standard](/posts/1-linux-fundamentals-basics/)
 
 ##### 1.1 🕰️ History of Linux Operating System
 
