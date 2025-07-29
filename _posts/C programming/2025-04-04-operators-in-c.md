@@ -7,24 +7,27 @@ hidden: true
 image:
   path: /assets/img/headers/c-programming.png
 ---
-### **1. Arithmetic Operators in C**
-
----
-
-Arithmetic operators are used to perform basic mathematical operations.
 
 
-| **Operator** | **Name**       | **Description**                        | **Example**                |
-| -------------- | ---------------- | ---------------------------------------- | ---------------------------- |
-| `+`          | Addition       | Adds two values                        | `x + y`                    |
-| `-`          | Subtraction    | Subtracts one value from another       | `x - y`                    |
-| `*`          | Multiplication | Multiplies two values                  | `x * y`                    |
-| `/`          | Division       | Divides one value by another           | `x / y`                    |
-| `%`          | Modulus        | Returns the remainder of division      | `x % y`                    |
-| `++`         | Increment      | Increases the value of a variable by 1 | `++x` (Pre) / `x++` (Post) |
-| `--`         | Decrement      | Decreases the value of a variable by 1 | `--x` (Pre) / `x--` (Post) |
 
-### **Example Code**
+
+# **C Operators – Complete Guide**
+
+## **1. Arithmetic Operators**
+
+Arithmetic operators perform basic mathematical calculations.
+
+| Operator | Name           | Description                        | Example       |
+| -------- | -------------- | ---------------------------------- | ------------- |
+| `+`      | Addition       | Adds two values                    | `x + y`       |
+| `-`      | Subtraction    | Subtracts one value from another   | `x - y`       |
+| `*`      | Multiplication | Multiplies two values              | `x * y`       |
+| `/`      | Division       | Divides one value by another       | `x / y`       |
+| `%`      | Modulus        | Remainder of division              | `x % y`       |
+| `++`     | Increment      | Increases variable by 1 (Pre/Post) | `++x` / `x++` |
+| `--`     | Decrement      | Decreases variable by 1 (Pre/Post) | `--x` / `x--` |
+
+**Example:**
 
 ```c
 #include <stdio.h>
@@ -38,50 +41,38 @@ int main() {
     printf("Division: %d\n", x / y);  // Integer division
     printf("Modulus: %d\n", x % y);
 
-    x++;  // Increment
+    x++; // Increment
     printf("Incremented x: %d\n", x);
 
-    y--;  // Decrement
+    y--; // Decrement
     printf("Decremented y: %d\n", y);
 
     return 0;
 }
 ```
 
-🔹 **Output:**
-
-```
-Addition: 13
-Subtraction: 7
-Multiplication: 30
-Division: 3
-Modulus: 1
-Incremented x: 11
-Decremented y: 2
-```
-
 ---
 
-### **2. Augmented Assignment Operators.**
+## **2. Assignment & Augmented Assignment Operators**
 
-Assignment operators are used to assign values to variables.
+Used to assign values to variables.
+Augmented assignment combines assignment with an operation.
 
+| Operator | Example   | Equivalent To | Description             |
+| -------- | --------- | ------------- | ----------------------- |
+| `=`      | `x = 5`   | `x = 5`       | Assigns value           |
+| `+=`     | `x += 3`  | `x = x + 3`   | Adds and assigns        |
+| `-=`     | `x -= 3`  | `x = x - 3`   | Subtracts and assigns   |
+| `*=`     | `x *= 3`  | `x = x * 3`   | Multiplies and assigns  |
+| `/=`     | `x /= 3`  | `x = x / 3`   | Divides and assigns     |
+| `%=`     | `x %= 3`  | `x = x % 3`   | Modulus and assigns     |
+| `&=`     | `x &= 3`  | `x = x & 3`   | Bitwise AND and assigns |
+| `\|=`    | `x \|= 3` | `x = x \| 3`  | Bitwise OR and assigns  |
+| `^=`     | `x ^= 3`  | `x = x ^ 3`   | Bitwise XOR and assigns |
+| `>>=`    | `x >>= 3` | `x = x >> 3`  | Right shift and assign  |
+| `<<=`    | `x <<= 3` | `x = x << 3`  | Left shift and assign   |
 
-| **Operator** | **Example** | **Equivalent To** | **Description**           |
-| -------------- | ------------- | ------------------- | --------------------------- |
-| `=`          | `x = 5`     | `x = 5`           | Assigns value to variable |
-| `+=`         | `x += 3`    | `x = x + 3`       | Adds and assigns          |
-| `-=`         | `x -= 3`    | `x = x - 3`       | Subtracts and assigns     |
-| `*=`         | `x *= 3`    | `x = x * 3`       | Multiplies and assigns    |
-| `/=`         | `x /= 3`    | `x = x / 3`       | Divides and assigns       |
-| `%=`         | `x %= 3`    | `x = x % 3`       | Modulus and assigns       |
-| `&=`         | `x &= 3`    | `x = x & 3`       | Bitwise AND and assigns   |
-| `            | =`          | `x                | = 3`                      |
-| `^=`         | `x ^= 3`    | `x = x ^ 3`       | Bitwise XOR and assigns   |
-| `>>=`        | `x >>= 3`   | `x = x >> 3`      | Right shift and assigns   |
-| `<<=`        | `x <<= 3`   | `x = x << 3`      | Left shift and assigns    |
-
-#### **Example Code**
+**Example:**
 
 ```c
 #include <stdio.h>
@@ -96,47 +87,45 @@ int main() {
 
 ---
 
-### **3. Comparison Operators**
+## **3. Comparison Operators**
 
-Comparison operators compare two values and return `1` (true) or `0` (false).
+Compare two values and return `1` (true) or `0` (false).
 
+| Operator | Name                | Example  | Description              |
+| -------- | ------------------- | -------- | ------------------------ |
+| `==`     | Equal to            | `x == y` | True if equal            |
+| `!=`     | Not equal           | `x != y` | True if not equal        |
+| `>`      | Greater than        | `x > y`  | True if left is greater  |
+| `<`      | Less than           | `x < y`  | True if left is less     |
+| `>=`     | Greater or equal to | `x >= y` | True if greater or equal |
+| `<=`     | Less or equal to    | `x <= y` | True if less or equal    |
 
-| **Operator** | **Name**                 | **Example** | **Description**                                   |
-| -------------- | -------------------------- | ------------- | --------------------------------------------------- |
-| `==`         | Equal to                 | `x == y`    | Returns`1` if values are equal                    |
-| `!=`         | Not equal                | `x != y`    | Returns`1` if values are not equal                |
-| `>`          | Greater than             | `x > y`     | Returns`1` if `x` is greater than `y`             |
-| `<`          | Less than                | `x < y`     | Returns`1` if `x` is less than `y`                |
-| `>=`         | Greater than or equal to | `x >= y`    | Returns`1` if `x` is greater than or equal to `y` |
-| `<=`         | Less than or equal to    | `x <= y`    | Returns`1` if `x` is less than or equal to `y`    |
-
-#### **Example Code**
+**Example:**
 
 ```c
 #include <stdio.h>
 
 int main() {
     int x = 5, y = 3;
-    printf("x > y: %d\n", x > y); // Output: 1 (true)
-    printf("x < y: %d\n", x < y); // Output: 0 (false)
+    printf("x > y: %d\n", x > y); // 1 (true)
+    printf("x < y: %d\n", x < y); // 0 (false)
     return 0;
 }
 ```
 
 ---
 
-### **4. Logical Operators**
+## **4. Logical Operators**
 
-Logical operators are used to combine multiple conditions.
+Used to combine conditions.
 
+| Operator | Name | Example            | Description                            |
+| -------- | ---- | ------------------ | -------------------------------------- |
+| `&&`     | AND  | `x < 5 && y > 2`   | True if both conditions are true       |
+| `\|\|`   | OR   | `x < 5 \|\| y > 5` | True if at least one condition is true |
+| `!`      | NOT  | `!(x == y)`        | Reverses the result                    |
 
-| **Operator** | **Name** | **Example**          | **Description**                                    |
-| -------------- | ---------- | ---------------------- | ---------------------------------------------------- |
-| `&&`         | AND      | `x < 5 && x < 10`    | Returns`1` if both conditions are true             |
-| `||`         | OR       | `x < 5 || x < 4`     | Returns 1 if one of the statements is true         |
-| `!`          | NOT      | `!(x < 5 && x < 10)` | Reverses the result (true → false, false → true) |
-
-#### **Example Code**
+**Example:**
 
 ```c
 #include <stdio.h>
@@ -144,16 +133,14 @@ Logical operators are used to combine multiple conditions.
 int main() {
     int x = 4, y = 6;
 
-    printf("(x < 5 && y > 5): %d\n", (x < 5 && y > 5)); // Output: 1
-    printf("(x > 5 || y > 5): %d\n", (x > 5 || y > 5)); // Output: 1
-    printf("!(x == 4): %d\n", !(x == 4)); // Output: 0
+    printf("(x < 5 && y > 5): %d\n", (x < 5 && y > 5)); // 1
+    printf("(x > 5 || y > 5): %d\n", (x > 5 || y > 5)); // 1
+    printf("!(x == 4): %d\n", !(x == 4));               // 0
 
     return 0;
 }
 ```
 
----
 
-Let me know if you want more examples! 🚀
 
-Would you like to see more examples or explanations? 😊
+

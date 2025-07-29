@@ -8,137 +8,176 @@ image:
   path: /assets/img/headers/c-programming.png
 ---
 
-In C, variables are used to store data values. A variable has a **data type**, a **name**, and a **value**. Here’s a breakdown of variables in C:
+
+
+# **C Variables – Complete Guide**
+
+## **1. What is a Variable?**
+
+A **variable** in C is a named memory location used to store data.
+A variable has:
+
+* **Data Type** – defines what kind of data it can store.
+* **Name** – the identifier.
+* **Value** – the stored data.
 
 ---
 
-## **1.Declaring and Initializing Variables**
+## **2. Declaring and Initializing Variables**
 
-To declare a variable:
+**Declaration** – Reserves memory:
 
 ```c
-data_type variable_name;
+int age;   // no value yet
 ```
 
+**Initialization** – Assigns a value:
+
 ```c
-    int x;            //declaration
+age = 25;
 ```
 
-To declare and initialize:
+**Declaration + Initialization**:
 
 ```c
-data_type variable_name = value;
-```
-
-```c
-    int x;            //declaration
-    x = 123;       //initialization
-```
-
-Example:
-
-```c
-int age = 25;   // Integer variable
-float gpa = 2.05;       //floating point number
-char grade = 'C';        //single character
-char name[] = "Bro"; //array of characters
-float pi = 3.14;  // Floating-point variable
-```
-
----
-
-## **2.C Format Specifiers**
-
-Format specifiers in C are used with functions like `printf()` and `scanf()` to specify the **type** of data being printed or read.
-
-#### **1. Integer Format Specifiers**
-
-| Specifier    | Description              | Example                    |
-| ------------ | ------------------------ | -------------------------- |
-| `%d` or `%i` | Signed integer (decimal) | `printf("%d", 42);`        |
-| `%u`         | Unsigned integer         | `printf("%u", 42);`        |
-| `%o`         | Octal integer            | `printf("%o", 42);` → `52` |
-| `%x`         | Hexadecimal (lowercase)  | `printf("%x", 42);` → `2a` |
-| `%X`         | Hexadecimal (uppercase)  | `printf("%X", 42);` → `2A` |
-
----
-
-#### **2. Floating-Point Format Specifiers**
-
-| Specifier    | Description                            | Example                                   |
-| ------------ | -------------------------------------- | ----------------------------------------- |
-| `%f`         | Floating-point (decimal notation)      | `printf("%f", 3.14159);` → `3.141590`     |
-| `%.nf`       | Fixed decimal places (`n` digits)      | `printf("%.2f", 3.14159);` → `3.14`       |
-| `%e` or `%E` | Scientific notation                    | `printf("%e", 3.14159);` → `3.141590e+00` |
-| `%g` or `%G` | Shortest representation (`%f` or `%e`) | `printf("%g", 3.14159);` → `3.14159`      |
-
----
-
-#### **3. Character & String Format Specifiers**
-
-| Specifier | Description | Example                            |
-| --------- | ----------- | ---------------------------------- |
-| `%c`      | Character   | `printf("%c", 'A');` → `A`         |
-| `%s`      | String      | `printf("%s", "Hello");` → `Hello` |
-
----
-
-#### **4. Pointer Format Specifier**
-
-| Specifier | Description           | Example              |
-| --------- | --------------------- | -------------------- |
-| `%p`      | Prints memory address | `printf("%p", ptr);` |
-
----
-
-#### **5. Miscellaneous**
-
-| Specifier | Description | Example               |
-| --------- | ----------- | --------------------- |
-| `%%`      | Prints`%`   | `printf("%%");` → `%` |
-
----
-
-#### **6. Width & Precision Modifiers**
-
-You can control the **width** and **precision** of output.
-
-- **Width (`%mX`)**: Specifies **minimum** width.
-- **Precision (`%.nX`)**: Controls decimal places for floating points.
-
-#### Example:
-
-```c
-printf("%10d", 42);   // Output: "        42" (right-aligned)
-printf("%-10d", 42);  // Output: "42        " (left-aligned)
-printf("%.2f", 3.14159); // Output: "3.14"
+int age = 25;        // integer
+float gpa = 3.75;    // floating-point
+char grade = 'A';    // single character
+char name[] = "Bro"; // string (array of characters)
 ```
 
 ---
 
-#### **7. Example Program**
+## **3. C Data Types (Basic)**
+
+| Data Type | Example | Typical Size\* |
+| --------- | ------- | -------------- |
+| int       | 42      | 4 bytes        |
+| float     | 3.14    | 4 bytes        |
+| double    | 3.14159 | 8 bytes        |
+| char      | 'A'     | 1 byte         |
+| \_Bool    | 0 / 1   | 1 byte         |
+
+> \*Size may vary depending on system and compiler.
+
+---
+
+## **4. Variable Scope**
+
+Scope defines **where** a variable can be accessed.
+
+1. **Local Variables** – Declared inside functions; exist only within that function.
+
+```c
+void func() {
+    int x = 5; // local
+}
+```
+
+2. **Global Variables** – Declared outside all functions; accessible from anywhere.
+
+```c
+int g = 10; // global
+```
+
+3. **Block Scope** – Declared inside `{}`; accessible only inside that block.
+
+```c
+if (1) {
+    int y = 20; // block scope
+}
+```
+
+---
+
+## **5. Storage Classes**
+
+Storage classes define **lifetime** and **visibility**.
+
+| Keyword  | Meaning                                           |
+| -------- | ------------------------------------------------- |
+| auto     | Default for local variables.                      |
+| static   | Retains value between function calls.             |
+| extern   | Declared in another file.                         |
+| register | Suggests storing in CPU register (faster access). |
+
+---
+
+## **6. Constants**
+
+Constants store fixed values that cannot change.
+
+```c
+const float PI = 3.14;   // constant variable
+#define MAX 100          // preprocessor constant
+```
+
+---
+
+## **7. Format Specifiers**
+
+Used with `printf()` / `scanf()` to display or read variables.
+
+### **Integer**
+
+| Specifier   | Meaning          |
+| ----------- | ---------------- |
+| `%d` / `%i` | Signed integer   |
+| `%u`        | Unsigned integer |
+| `%o`        | Octal            |
+| `%x` / `%X` | Hexadecimal      |
+
+### **Floating-Point**
+
+| Specifier   | Meaning                 |
+| ----------- | ----------------------- |
+| `%f`        | Decimal notation        |
+| `%.nf`      | Fixed decimal places    |
+| `%e` / `%E` | Scientific notation     |
+| `%g` / `%G` | Shortest representation |
+
+### **Character & String**
+
+| Specifier | Meaning          |
+| --------- | ---------------- |
+| `%c`      | Single character |
+| `%s`      | String           |
+
+### **Pointer**
+
+| Specifier | Meaning        |
+| --------- | -------------- |
+| `%p`      | Memory address |
+
+### **Special**
+
+| Specifier | Meaning    |
+| --------- | ---------- |
+| `%%`      | Prints `%` |
+
+---
+
+## **8. Example Program**
 
 ```c
 #include <stdio.h>
 
-int main() {
-    int num = 42;
-    float pi = 3.14159;
-    char ch = 'A';
-    char str[] = "Hello";
-    char name[] = "Bro"; //array of characters
-    char grade = 'C';        //single character
-    float gpa = 2.05;       //floating point number
+int globalVar = 100; // global variable
 
-    printf("Integer: %d\n", num);
-    printf("Float: %.2f\n", pi);
-    printf("Character: %c\n", ch);
-    printf("String: %s\n", str);
-    printf("Hexadecimal: %x\n", num);
-    printf("Pointer: %p\n", (void*)&num);
-    printf("Hello %s\n", name);
-    printf("Your average grade is %c\n", grade);
-    printf("Your gpa is %f\n", gpa);
+int main() {
+    int age = 25;           // integer
+    float gpa = 3.75;       // float
+    char grade = 'A';       // char
+    char name[] = "Bro";    // string
+    const float PI = 3.14;  // constant
+
+    printf("Name: %s\n", name);
+    printf("Age: %d\n", age);
+    printf("GPA: %.2f\n", gpa);
+    printf("Grade: %c\n", grade);
+    printf("PI: %.2f\n", PI);
+    printf("Global Var: %d\n", globalVar);
+    printf("Memory address of age: %p\n", (void*)&age);
 
     return 0;
 }

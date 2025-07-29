@@ -8,58 +8,56 @@ image:
     path: /assets/img/headers/c-programming.png
 ---
 
-Constants are fixed values that do not change during the execution of a program. They are used to define values that remain constant throughout the program, ensuring better readability, maintainability, and security of the code.
+# **C Constants – Complete Guide**
+
+## **1. What is a Constant?**
+
+A **constant** in C is a value that cannot be changed during program execution.
+Constants make programs **more readable, maintainable, and safe**.
 
 ---
 
-### **Types of Constants**
+## **2. Types of Constants**
 
-Constants in C are broadly classified into two categories:
+Constants are broadly classified into:
 
-1. **Primary Constants**
-2. **Secondary Constants**
-
----
-
-## **Comparison Table: Primary vs. Secondary Constants**
----
-
-
-|                   **Category**                   | **Type**                                                     | **Example**                     |
-| :-------------------------------------------------: | -------------------------------------------------------------- | --------------------------------- |
-|   [**Primary Constants**](#1-primary-constants)   | [Integer Constant](#11-integer-constants)                    | `10`, `-3`, `0xA`               |
-|                                                   | [Real Constant](#12-real-constants-floating-point-constants) | `3.14`, `-5.6`                  |
-|                                                   | [Character Constant](#13-character-constants)                | `'A'`, `'9'`                    |
-| [**Secondary Constants**](#2-secondary-constants) | [String Constant](#21-string-constants)                      | `"Hello"`                       |
-|                                                   | [Array Constant](#22-array-constants)                        | `{1, 2, 3}`                     |
-|                                                   | [Pointer Constant](#23-pointer-constants)                    | `int *const p;`                 |
-|                                                   | [Enumeration (`enum`)](#24-enumeration-constants-enum)       | `enum Colors {RED, GREEN};`     |
-|                                                   | [Structure Constant](#25-structure-constants-struct)         | `struct Point { const int x; }` |
-|                                                   | [Macro Constant](#26-macro-constants-define)          | `#define MAX 100`               |
+1. **Primary Constants** – Basic, fundamental constants.
+2. **Secondary Constants** – Derived from primary constants.
 
 ---
 
-# **1. Primary Constants**
+## **3. Primary vs. Secondary Constants – Quick Table**
+
+| Category                | Type                           | Example                         |
+| ----------------------- | ------------------------------ | ------------------------------- |
+| **Primary Constants**   | Integer Constant               | `10`, `-3`, `0xA`               |
+|                         | Real Constant (Floating Point) | `3.14`, `-5.6`, `2.5e3`         |
+|                         | Character Constant             | `'A'`, `'9'`, `'%'`             |
+| **Secondary Constants** | String Constant                | `"Hello"`                       |
+|                         | Array Constant                 | `{1, 2, 3}`                     |
+|                         | Pointer Constant               | `int *const p;`                 |
+|                         | Enumeration Constant (`enum`)  | `enum Colors { RED, GREEN };`   |
+|                         | Structure Constant (`struct`)  | `struct Point { const int x; }` |
+|                         | Macro Constant (`#define`)     | `#define MAX 100`               |
+
 ---
 
-Primary constants are fundamental values that remain unchanged. These include:
+## **4. Primary Constants**
 
-#### **1.1 Integer Constants**
+### **4.1 Integer Constants**
 
----
+* Whole numbers without a decimal point.
+* Can be positive, negative, or zero.
+* Number systems:
 
-- An integer constant contains only digits and does not include any decimal point.
-- It can be positive, negative, or zero.
-- It can be represented in different number systems:
-  - **Decimal (Base 10):** Example: `1`, `-43`, `500`
-  - **Octal (Base 8):** Starts with `0`. Example: `077` (equals 63 in decimal)
-  - **Hexadecimal (Base 16):** Starts with `0x`. Example: `0x1A` (equals 26 in decimal)
+  * **Decimal (Base 10)** → `1`, `-43`, `500`
+  * **Octal (Base 8)** → Starts with `0` → `077` (63 in decimal)
+  * **Hexadecimal (Base 16)** → Starts with `0x` → `0x1A` (26 in decimal)
 
-##### **Example in C:**
+**Example:**
 
 ```c
 #include <stdio.h>
-
 int main() {
     const int age = 25;
     printf("Age: %d\n", age);
@@ -69,40 +67,36 @@ int main() {
 
 ---
 
-#### **1.2 Real Constants (Floating Point Constants)**
----
+### **4.2 Real Constants (Floating-Point)**
 
-- A real constant (or floating-point constant) contains digits and must have a decimal point.
-- It can be expressed in:
-  - **Fractional form:** Example: `3.1416`, `-54.5`
-  - **Exponential form:** Example: `2.5e3` (equals `2500`), `3.2E-4` (equals `0.00032`)
+* Contain digits **and** a decimal point.
+* Can be in:
 
-##### **Example in C:**
+  * **Fractional form** → `3.14`, `-54.5`
+  * **Exponential form** → `2.5e3` (2500), `3.2E-4` (0.00032)
+
+**Example:**
 
 ```c
 #include <stdio.h>
-
 int main() {
     const float PI = 3.1416;
-    printf("Value of PI: %f\n", PI);
+    printf("Value of PI: %.4f\n", PI);
     return 0;
 }
 ```
 
 ---
 
-#### **1.3 Character Constants**
----
+### **4.3 Character Constants**
 
-- A character constant is a single character enclosed in single quotes (`' '`).
-- Examples: `'A'`, `'1'`, `'%'`, `'z'`
-- Each character constant is internally stored as an integer (ASCII value).
+* A single character in single quotes (`' '`).
+* Stored internally as an **ASCII integer value**.
 
-##### **Example in C:**
+**Example:**
 
 ```c
 #include <stdio.h>
-
 int main() {
     const char grade = 'A';
     printf("Grade: %c\n", grade);
@@ -112,22 +106,17 @@ int main() {
 
 ---
 
-# **2. Secondary Constants**
+## **5. Secondary Constants**
 
+### **5.1 String Constants**
 
-Secondary constants are derived from primary constants. These include:
+* A sequence of characters in double quotes (`" "`).
+* Automatically ends with `\0` (null character).
 
-### **2.1 String Constants**
----
-
-- A string constant is a sequence of characters enclosed in double quotes (`" "`).
-- It automatically ends with a null character (`\0`).
-
-#### **Example in C:**
+**Example:**
 
 ```c
 #include <stdio.h>
-
 int main() {
     const char message[] = "Hello, World!";
     printf("%s\n", message);
@@ -137,40 +126,35 @@ int main() {
 
 ---
 
-### **2.2 Array Constants**
----
+### **5.2 Array Constants**
 
-- An array constant is a fixed collection of values stored in contiguous memory locations.
+* A fixed collection of constant values.
 
-#### **Example in C:**
+**Example:**
 
 ```c
 #include <stdio.h>
-
 int main() {
     const int numbers[] = {10, 20, 30};
-    printf("First Element: %d\n", numbers[0]);
+    printf("First element: %d\n", numbers[0]);
     return 0;
 }
 ```
 
 ---
 
-### **2.3 Pointer Constants**
----
+### **5.3 Pointer Constants**
 
-- A pointer constant is a pointer whose memory address cannot be changed.
+* A pointer whose **address cannot change** after initialization.
 
-#### **Example in C:**
+**Example:**
 
 ```c
 #include <stdio.h>
-
 int main() {
     int value = 50;
     int *const ptr = &value;
-    *ptr = 100;  // Allowed
-    // ptr = &new_value;  // Not Allowed
+    *ptr = 100; // Allowed (change value)
     printf("Value: %d\n", value);
     return 0;
 }
@@ -178,42 +162,36 @@ int main() {
 
 ---
 
-### **2.4 Enumeration Constants (`enum`)**
----
+### **5.4 Enumeration Constants (`enum`)**
 
-- An enumeration is a set of named integer constants.
+* Named integer constants for better readability.
 
-#### **Example in C:**
+**Example:**
 
 ```c
 #include <stdio.h>
-
 enum Days { MON = 1, TUE, WED, THU, FRI, SAT, SUN };
-
 int main() {
     enum Days today = WED;
-    printf("Today is day number: %d\n", today);
+    printf("Day number: %d\n", today);
     return 0;
 }
 ```
 
 ---
 
-### **2.5 Structure Constants (`struct`)**
----
+### **5.5 Structure Constants (`struct`)**
 
-- A structure constant allows defining immutable fields inside a struct.
+* Immutable structure members using `const`.
 
-#### **Example in C:**
+**Example:**
 
 ```c
 #include <stdio.h>
-
 struct Point {
     const int x;
     const int y;
 };
-
 int main() {
     struct Point p = {10, 20};
     printf("Point: (%d, %d)\n", p.x, p.y);
@@ -223,23 +201,18 @@ int main() {
 
 ---
 
-### **2.6 Macro Constants (`#define`)**
----
+### **5.6 Macro Constants (`#define`)**
 
-- A preprocessor directive to define constants before compilation.
-  {% include embed/youtube.html id='BVnNg20AuYU?start=25&end=143tOQZlD-0Sc' %}
+* Defined **before compilation** using the preprocessor.
 
-#### **Example in C:**
+**Example:**
 
 ```c
 #include <stdio.h>
-
 #define PI 3.1416
-
 int main() {
-    printf("PI: %f\n", PI);
+    printf("PI: %.4f\n", PI);
     return 0;
 }
 ```
 
----

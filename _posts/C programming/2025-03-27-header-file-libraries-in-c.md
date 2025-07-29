@@ -8,66 +8,93 @@ image:
   path: /assets/img/headers/c-programming.png
 ---
 
-## **Header File Libraries**
+# **C Header File Libraries – Complete Guide**
 
-A header file in C is a file that contains function declarations, macros, and definitions. It helps you use built-in functions without writing them yourself.
+## **1. What is a Header File?**
 
-💡 Think of a header file like a toolbox—it gives you ready-made tools (functions) so you don’t have to build them from scratch.
+A **header file** in C contains:
 
-#### **Common C Header Files & Their Uses**
+* Function **declarations** (prototypes)
+* **Macros** and constants
+* **Type definitions**
 
-| **Header File**   | **What It Does**                                  |
-| ----------------- | ------------------------------------------------- |
-| **`<stdio.h>`**   | Input & output (e.g.,`printf`, `scanf`)           |
-| **`<stdlib.h>`**  | Memory management (`malloc`, `free`), conversions |
-| **`<string.h>`**  | String handling (`strlen`, `strcpy`, `strcmp`)    |
-| **`<math.h>`**    | Math operations (`sqrt`, `pow`, `sin`, `cos`)     |
-| **`<ctype.h>`**   | Character handling (`toupper`, `isdigit`)         |
-| **`<time.h>`**    | Date & time functions (`time`, `clock`)           |
-| **`<stdbool.h>`** | Boolean values (`true`, `false`)                  |
+They allow you to use pre-written code without rewriting it.
 
-## **Making A Custom Header File Libraries**
+💡 **Think of it as a toolbox** — it gives you ready-made tools (functions) so you don’t have to build them yourself.
+
+---
+
+## **2. Common C Header Files**
+
+| Header File   | Purpose & Common Functions                                           |
+| ------------- | -------------------------------------------------------------------- |
+| `<stdio.h>`   | Standard input/output → `printf()`, `scanf()`, `fopen()`, `fclose()` |
+| `<stdlib.h>`  | Memory management → `malloc()`, `free()`, `exit()`                   |
+| `<string.h>`  | String handling → `strlen()`, `strcpy()`, `strcmp()`                 |
+| `<math.h>`    | Math functions → `sqrt()`, `pow()`, `sin()`, `cos()`                 |
+| `<ctype.h>`   | Character handling → `toupper()`, `isdigit()`, `isalpha()`           |
+| `<time.h>`    | Date & time → `time()`, `clock()`, `difftime()`                      |
+| `<stdbool.h>` | Boolean type → `true`, `false`                                       |
+
+---
+
+## **3. Creating a Custom Header File**
+
+You can make your own header file to organize code better.
 
 {% include embed/youtube.html id='tOQZlD-0Scc' %}
 
-**Create a file named** `myheader.h`
+### **Step 1 – Create a header file (`myheader.h`)**
 
 ```c
-#ifndef MYHEADER_H  // This makes sure the spellbook isn't loaded twice
+#ifndef MYHEADER_H   // Prevents multiple inclusion
 #define MYHEADER_H
 
-void sayHello();  // Just telling the program: "I have a spell called sayHello!"
+void sayHello();     // Function prototype
 
 #endif
-
 ```
 
-**Create another file named** `myheader.c`
+---
 
-```c
-#include <stdio.h>   // We need this to use printf
-#include "myheader.h"  // Import the spellbook
-
-void sayHello() {
-    printf("Hello! I am your magic spell!\n");
-}
-```
-
-**Create a third file named** `main.c`
+### **Step 2 – Create the implementation file (`myheader.c`)**
 
 ```c
 #include <stdio.h>
-#include "myheader.h"  // Load the spellbook!
+#include "myheader.h" // Include your custom header
+
+void sayHello() {
+    printf("Hello! I am your custom function!\n");
+}
+```
+
+---
+
+### **Step 3 – Create the main program (`main.c`)**
+
+```c
+#include <stdio.h>
+#include "myheader.h" // Use the custom header
 
 int main() {
-    sayHello();  // Use the magic spell
+    sayHello(); // Call the function
     return 0;
 }
 ```
 
-**Run this in the terminal:**
+---
+
+### **Step 4 – Compile and Run**
 
 ```bash
 gcc main.c myheader.c -o main
 ./main
 ```
+
+✅ Output:
+
+```
+Hello! I am your custom function!
+```
+
+---
