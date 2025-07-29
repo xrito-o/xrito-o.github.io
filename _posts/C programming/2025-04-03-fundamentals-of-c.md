@@ -21,7 +21,7 @@ image:
 
 # **C Programming**
 
-## **What is C?**
+## **What is C?**s
 
 C is a general-purpose programming language created by **Dennis Ritchie** in 1972 at Bell Labs. It is fast, powerful, and forms the foundation of many modern languages. C is closely tied to the development of **UNIX**.
 
@@ -83,11 +83,6 @@ int main() {
     return 0;
 }
 ```
-
----
-
-If you want, I can now make this **front page match the style of your other cleaned docs** so your whole C programming guide feels like one polished book.
-Do you want me to do that?
 
 
 
