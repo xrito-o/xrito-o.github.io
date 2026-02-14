@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Album</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #2e1a12;
+            /* Dark wood/leather */
+            --page-bg: #fdfbf7;
+            /* Off-white paper */
+            --text-color: #2c2925;
+            --accent-color: #8b5a2b;
+            --paper-texture: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmRmYmY3Ii8+CjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmMmZjZjUiIG9wYWNpdHk9IjAuNSIvPgo8L3N2Zz4=');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: var(--bg-color);
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                repeating-linear-gradient(45deg, #3e2723 0, #3e2723 10px, #2e1a12 10px, #2e1a12 20px);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        /* Album Book Structure */
+        .album-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            perspective: 2000px;
+        }
+
+        .book {
+            background-color: var(--page-bg);
+            background-image: var(--paper-texture);
+            display: flex;
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 0 2px #5d4037 inset;
+            /* Inner cover border */
+            border-radius: 20px;
+            /* Increased rounding */
+            position: relative;
+            height: 85vh;
+            /* Fixed height to prevent shifting */
+            width: 90vw;
+            /* Responsive fixed width */
+            max-width: 1400px;
+            transform-style: preserve-3d;
+            overflow: hidden;
+            /* Ensure circular corners clip content */
+        }
+
+        .book::before {
+            /* Spine Shadow */
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            margin-left: -20px;
+            background: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.05),
+                    rgba(0, 0, 0, 0.2) 20%,
+                    rgba(0, 0, 0, 0.3) 50%,
+                    rgba(0, 0, 0, 0.2) 80%,
+                    rgba(0, 0, 0, 0.05));
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .page {
+            flex: 1;
+            padding: 3rem;
+            position: relative;
+            height: 100%;
+            /* Fill book height */
+            overflow: hidden;
+        }
+
+        .left-page {
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .right-page {
+            background-image: var(--paper-texture);
+            overflow-y: auto;
+            /* Scrol content */
+            position: relative;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        /* Custom Scrollbar Global & Right Page */
+        /* Standard Syntax (Firefox) */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #8d6e63 #fdfbf7;
+        }
+
+        /* Webkit Syntax (Chrome, Edge, Safari) */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #fdfbf7;
+            border-left: 1px solid #d7ccc8;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #8d6e63;
+            border-radius: 6px;
+            border: 3px solid #fdfbf7;
+            /* Creates padding around thumb */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #6d4c41;
+        }
+
+        /* Specific overrides if needed, but global covers it mostly */
+        .right-page::-webkit-scrollbar-track {
+            background: #fdfbf7;
+        }
+
+        /* Header & Typography */
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            /* NEW FONT */
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #3e2723;
+            margin-bottom: 1rem;
+            text-align: center;
+            border-bottom: 2px solid #3e2723;
+            padding-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: 2px;
+        }
+
+        .intro {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            text-align: center;
+            color: #5d4037;
+            margin-bottom: 2rem;
+        }
+
+        /* Navigation (Table of Contents Style) */
+        .area-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 0 1rem 0 2rem;
+            /* Added padding-right for scrollbar space */
+            overflow-y: auto;
+            flex: 1;
+            /* Allow it to take up remaining space */
+            min-height: 0;
+            /* Important for flex child scrolling */
+            scrollbar-width: thin;
+            scrollbar-color: #d7ccc8 transparent;
+        }
+
+        /* Custom Scrollbar for Area Nav */
+        .area-nav::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .area-nav::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .area-nav::-webkit-scrollbar-thumb {
+            background-color: #d7ccc8;
+            border-radius: 4px;
+            border: 2px solid #fdfbf7;
+        }
+
+        .area-nav::-webkit-scrollbar-thumb:hover {
+            background-color: #8d6e63;
+        }
+
+        .area-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 1px dotted #8d6e63;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            text-align: left;
+            color: #5d4037;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .area-btn:hover,
+        .area-btn.active {
+            color: #3e2723;
+            padding-left: 1.5rem;
+            font-weight: bold;
+        }
+
+        .area-btn.active::before {
+            content: '❧';
+            /* Floral heart bullet or similar */
+            position: absolute;
+            left: 0;
+            color: #8b5a2b;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        /* Initial "Cover" State for Right Page */
+        .album-cover-placeholder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            color: #8d6e63;
+            opacity: 0.6;
+        }
+
+        .album-cover-placeholder svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            fill: currentColor;
+        }
+
+        /* Photo Items (Polaroid Style) */
+        .photo-item {
+            background-color: #fff;
+            padding: 12px 12px 45px 12px;
+            box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+            position: relative;
+            transform-origin: center;
+        }
+
+        /* Tape Effect */
+        .photo-item::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Random Rotation for organic feel */
+        .photo-item:nth-child(3n) {
+            transform: rotate(2deg);
+        }
+
+        .photo-item:nth-child(3n+1) {
+            transform: rotate(-1.5deg);
+        }
+
+        .photo-item:nth-child(3n+2) {
+            transform: rotate(1deg);
+        }
+
+        .photo-item:nth-child(5n) {
+            transform: rotate(-2.5deg);
+        }
+
+        .photo-item:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            z-index: 20;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            filter: sepia(30%) contrast(1.1) brightness(0.9);
+            transition: filter 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .photo-item:hover img {
+            filter: sepia(0%) contrast(1) brightness(1);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            padding: 0 15px;
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: #333;
+            line-height: 1.2;
+
+            /* Long text handling */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Footer */
+        .book-footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8d6e63;
+            margin-top: auto;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 2rem;
+        }
+
+        .loading {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            color: #8d6e63;
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 2rem;
+        }
+
+        /* Modal styling updates */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 20, 15, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            border: 10px solid #fff;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            /* Ensure caption works relative to this if we move it */
+        }
+
+        .modal img {
+            max-height: 80vh;
+            display: block;
+        }
+
+        /* Modal Caption */
+        .modal-caption {
+            color: black;
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            background: #fff;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #d7ccc8;
+            font-size: 3rem;
+            font-family: 'Caveat', cursive;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 2001;
+        }
+
+        .close-modal:hover {
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            body {
+                padding: 0;
+                align-items: flex-start;
+                background: var(--page-bg);
+                /* Simplified background for mobile */
+            }
+
+            .book {
+                flex-direction: column;
+                box-shadow: none;
+                background: none;
+                width: 100%;
+            }
+
+            .book::before {
+                display: none;
+            }
+
+            /* Hide spine */
+
+            .left-page,
+            .right-page {
+                border: none;
+                padding: 1.5rem;
+                max-height: none;
+                overflow: visible;
+            }
+
+            .left-page {
+                background-color: #f7f3e8;
+                /* Slightly darker for header */
+                border-bottom: 1px solid #d7ccc8;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .area-btn {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Pagination Controls */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .page-btn {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 1.2rem;
+            color: #8d6e63;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            color: #3e2723;
+            border-bottom-color: #3e2723;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        .page-info {
+            font-size: 1rem;
+            color: #5d4037;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="album-wrapper">
+        <div class="book">
+            <!-- Spine shadow effect -->
+            <div class="page left-page">
+                <header>
+                    <h1>Photo Album</h1>
+                    <p class="intro">"Memories collected, moments preserved."</p>
+                </header>
+
+                <nav class="area-nav" id="areaNav">
+                    <!-- Buttons generated dynamically -->
+                </nav>
+
+                <footer class="book-footer">
+                    <p>Designed with &hearts; for the memories.</p>
+                </footer>
+            </div>
+
+            <div class="page right-page">
+                <div class="gallery" id="photoGallery">
+                    <!-- Default State: Empty/Cover Placeholder -->
+                    <div class="album-cover-placeholder">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                            <!-- Simple Plus or Book Icon placeholder -->
+                            <path
+                                d="M18,2H6C4.9,2 4,2.9 4,4V20C4,21.1 4.9,22 6,22H18C19.1,22 20,21.1 20,20V4C20,2.9 19.1,2 18,2M6,4H11V9L8.5,7.5L6,9V4M18,20H6V4H18V20Z"
+                                opacity="0.3" fill="none" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                        <h2>Select a Chapter</h2>
+                        <p>Open a collection from the left to view photos.</p>
+                    </div>
+                </div>
+                <div id="paginationControls" class="pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for full-size image view -->
+    <div class="modal" id="imageModal">
+        <span class="close-modal">close</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div id="modalCaption" class="modal-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration - Update these to match your setup
+        const CONFIG = {
+            basePath: './photos',
+            imageExtensions: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'],
+            useFolderNames: true,
+            autoGenerateCaptions: true
+        };
+
+        const gallery = document.getElementById('photoGallery');
+        const areaNav = document.getElementById('areaNav');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModal = document.querySelector('.close-modal');
+
+        let allPhotos = [];
+        let areas = new Set();
+
+        function generateCaption(filename) {
+            let name = filename.replace(/\.[^/.]+$/, "");
+            name = name.replace(/[-_]/g, ' ');
+
+            // Clean up hash-like strings if they look like generated IDs (optional heuristic)
+            if (name.length > 20 && /[0-9a-f]{10,}/.test(name)) {
+                return "Untitled Memory";
+            }
+
+            return name.replace(/\w\S*/g, function (txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+
+        async function loadAllPhotos() {
+            allPhotos = [];
+            areas.clear();
+
+            try {
+                const resp = await fetch('./photos.json', { cache: 'no-store' });
+                if (!resp.ok) throw new Error('photos.json not found');
+                const manifest = await resp.json();
+
+                for (const [area, files] of Object.entries(manifest)) {
+                    if (!Array.isArray(files) || files.length === 0) continue;
+                    areas.add(area);
+                    for (const filePath of files) {
+                        const filename = filePath.split('/').pop();
+                        allPhotos.push({
+                            area: area,
+                            path: filePath,
+                            caption: CONFIG.autoGenerateCaptions ? generateCaption(filename) : `${area} Photo`
+                        });
+                    }
+                }
+
+                updateAreaNavigation();
+                // do NOT call displayPhotos() here to keep initial state empty
+
+            } catch (err) {
+                console.error('Failed to load photos.json:', err);
+                gallery.innerHTML = '<p class="intro">Please run generate-photos.js to organize the album.</p>';
+            }
+        }
+
+        // Store the initial cover HTML
+        const coverHTML = `
+            <div class="album-cover-placeholder">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                    <path d="M18,2H6C4.9,2 4,2.9 4,4V20C4,21.1 4.9,22 6,22H18C19.1,22 20,21.1 20,20V4C20,2.9 19.1,2 18,2M6,4H11V9L8.5,7.5L6,9V4M18,20H6V4H18V20Z" opacity="0.3" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <h2>Select a Chapter</h2>
+                <div style="max-width: 600px; margin: 1rem auto; line-height: 1.6; font-size: 1.1rem;">
+                    <p>Welcome to my digital photo album. This collection preserves moments frozen in time—snapshots of joy, nostalgia, and everyday life.</p>
+                    <br>
+                    <p>Please select a chapter from the left to begin browsing through the memories.</p>
+                </div>
+            </div>
+        `;
+
+        function updateAreaNavigation() {
+            areaNav.innerHTML = '';
+
+            // Rename "Preface (All)" to "Welcome Page" and set area to 'welcome'
+            const welcomeBtn = document.createElement('button');
+            welcomeBtn.className = 'area-btn active'; // Active by default
+            welcomeBtn.setAttribute('data-area', 'welcome');
+            welcomeBtn.textContent = 'Welcome Page';
+            areaNav.appendChild(welcomeBtn);
+
+            areas.forEach(area => {
+                const button = document.createElement('button');
+                button.className = 'area-btn';
+                button.setAttribute('data-area', area);
+                button.textContent = `Chapter: ${area.charAt(0).toUpperCase() + area.slice(1)}`;
+                areaNav.appendChild(button);
+            });
+
+            document.querySelectorAll('.area-btn').forEach(button => {
+                button.addEventListener('click', handleAreaClick);
+            });
+        }
+
+        function handleAreaClick(event) {
+            const button = event.target;
+            document.querySelectorAll('.area-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+            const area = button.getAttribute('data-area');
+            displayPhotos(area);
+        }
+
+        const paginationControls = document.getElementById('paginationControls');
+
+        function displayPhotos(area, page = 1) {
+            gallery.innerHTML = '';
+            paginationControls.innerHTML = '';
+
+            // If area is 'welcome', show the cover/placeholder
+            if (area === 'welcome') {
+                gallery.innerHTML = coverHTML;
+                return;
+            }
+
+            const allAreaPhotos = area === 'all' ? allPhotos : allPhotos.filter(photo => photo.area === area);
+
+            if (allAreaPhotos.length === 0) {
+                gallery.innerHTML = '<p class="intro">No photos in this chapter yet.</p>';
+                return;
+            }
+
+            // Pagination Logic
+            const photosPerPage = 4;
+            const totalPages = Math.ceil(allAreaPhotos.length / photosPerPage);
+
+            // Ensure page is within bounds
+            if (page < 1) page = 1;
+            if (page > totalPages) page = totalPages;
+
+            const startIndex = (page - 1) * photosPerPage;
+            const endIndex = startIndex + photosPerPage;
+            const currentPhotos = allAreaPhotos.slice(startIndex, endIndex);
+
+            currentPhotos.forEach((photo, index) => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.style.animationDelay = `${index * 50}ms`;
+
+                // Truncation handled by CSS .photo-caption
+                photoItem.innerHTML = `
+                    <img src="${photo.path}" alt="${photo.caption}" loading="lazy" title="${photo.caption}">
+                    <div class="photo-caption">${photo.caption}</div>
+                `;
+
+                photoItem.querySelector('img').addEventListener('click', () => {
+                    modalImage.src = photo.path;
+                    modalImage.alt = photo.caption;
+                    modalCaption.textContent = photo.caption; // Show full caption in modal
+                    modal.style.display = 'flex';
+                });
+
+                gallery.appendChild(photoItem);
+            });
+
+            renderPagination(area, page, totalPages);
+        }
+
+        function renderPagination(area, currentPage, totalPages) {
+            if (totalPages <= 1) return;
+
+            const prevButton = document.createElement('button');
+            prevButton.className = 'page-btn';
+            prevButton.textContent = '← Previous';
+            prevButton.disabled = currentPage === 1;
+            prevButton.onclick = () => displayPhotos(area, currentPage - 1);
+
+            const nextButton = document.createElement('button');
+            nextButton.className = 'page-btn';
+            nextButton.textContent = 'Next →';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.onclick = () => displayPhotos(area, currentPage + 1);
+
+            const pageInfo = document.createElement('span');
+            pageInfo.className = 'page-info';
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+            paginationControls.appendChild(prevButton);
+            paginationControls.appendChild(pageInfo);
+            paginationControls.appendChild(nextButton);
+        }
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+
+        loadAllPhotos();
+    </script>
+</body>
+
+</html>

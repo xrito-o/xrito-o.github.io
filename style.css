@@ -1,0 +1,292 @@
+/* 'Lain' Aesthetic Theme - Modern Minimalist */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #0d1616;
+    /* Deep Teal-Black */
+    --wired-grey: #1a2a2a;
+    /* Desaturated Teal */
+    --text-faded: #a0b0b0;
+    /* Pale Aqua-Grey */
+    --text-bright: #e0f5f5;
+    /* Bright Mint/Ice */
+    --lain-red: #00ced1;
+    /* Dark Turquoise (Highlight) */
+    --selection-bg: rgba(0, 206, 209, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+::selection {
+    background: var(--selection-bg);
+    color: var(--text-bright);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-faded);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Noise texture overlay */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Background elements simulating "The Wired" power lines */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 10%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--wired-grey), transparent);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 15%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--wired-grey), transparent);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 2rem;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Profile Picture Styling */
+.pfp-container {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid var(--wired-grey);
+    overflow: hidden;
+    background-color: var(--wired-grey);
+}
+
+.pfp {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.2) sepia(50%) hue-rotate(140deg);
+    /* Teal tint */
+    opacity: 0.8;
+    transition: all 0.5s ease;
+    image-rendering: pixelated;
+    /* Tech look */
+}
+
+.pfp-container:hover .pfp {
+    filter: grayscale(0.5) contrast(1) sepia(0);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.pfp-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent 50%, rgba(0, 206, 209, 0.05) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+
+/* Header */
+header {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+h1 {
+    font-family: 'Courier Prime', monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    letter-spacing: -2px;
+    text-transform: lowercase;
+    position: relative;
+    display: inline-block;
+}
+
+h1::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--lain-red);
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    opacity: 0.7;
+    animation: glitch 3s infinite linear alternate-reverse;
+}
+
+.subtitle {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    color: var(--lain-red);
+    display: block;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+/* Content blocks */
+p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    color: var(--text-faded);
+    text-align: justify;
+}
+
+.wired-hint {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+    color: var(--wired-grey);
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-link {
+    font-family: 'Courier Prime', monospace;
+    text-decoration: none;
+    color: var(--text-bright);
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    width: fit-content;
+    position: relative;
+}
+
+.nav-link::before {
+    content: '[ ';
+    color: var(--lain-red);
+    opacity: 0;
+    transition: all 0.3s;
+    margin-right: 5px;
+}
+
+.nav-link::after {
+    content: ' ]';
+    color: var(--lain-red);
+    opacity: 0;
+    transition: all 0.3s;
+    margin-left: 5px;
+}
+
+.nav-link:hover {
+    color: var(--lain-red);
+    padding-left: 10px;
+}
+
+.nav-link:hover::before,
+.nav-link:hover::after {
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    10% {
+        transform: translate(-2px, 2px);
+    }
+
+    20% {
+        transform: translate(-2px, -2px);
+    }
+
+    30% {
+        transform: translate(2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    50% {
+        transform: translate(-2px, 2px);
+    }
+
+    60% {
+        transform: translate(-2px, -2px);
+    }
+
+    70% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    90% {
+        transform: translate(-2px, 2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Glitch Trigger specifically for H1 */
+h1:hover::before {
+    animation: glitch 0.3s infinite linear;
+    color: white;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+}
